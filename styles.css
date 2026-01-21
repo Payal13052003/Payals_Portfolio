@@ -1,0 +1,165 @@
+/* Global Styles */
+body {
+  box-sizing: border-box;
+}
+
+* {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.heading-font {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card Hover Effect */
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+}
+
+/* Animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skill-bar {
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Blob Animation */
+.blob {
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  animation: morph 8s ease-in-out infinite;
+}
+
+@keyframes morph {
+  0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+  50% { border-radius: 70% 30% 50% 50% / 30% 60% 70% 40%; }
+}
+
+/* Navigation Link Styles */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transition: width 0.3s ease;
+}
+
+/* Section Reveal Animation */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* View Transition */
+@view-transition {
+  navigation: auto;
+}
+
+/* Navbar Background */
+.bg-navbar {
+  background-color: rgba(15, 12, 41, 0.9);
+}
+
+/* Project Card Image Fallback */
+.project-image-fallback {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed #6b7280;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.project-image-fallback svg {
+  width: 4rem;
+  height: 4rem;
+  color: #6b7280;
+  margin-bottom: 0.75rem;
+}
+
+.project-image-fallback p {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+/* Blob animation delay */
+.blob-delay {
+  animation-delay: 2s;
+}
+
+/* Section Reveal Animation */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* View Transition */
+@view-transition {
+  navigation: auto;
+}
