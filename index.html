@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Payal Gupta - AI/ML Engineer Portfolio</title>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
   <script src="/_sdk/element_sdk.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css">
@@ -57,6 +58,42 @@
         </div>
       </div>
     </section><!-- About Section -->
+    <section id="about" class="py-20 px-6 section-reveal">
+  <div class="max-w-6xl mx-auto">
+    <h2 id="about-title" class="text-4xl md:text-6xl font-bold heading-font gradient-text mb-12 text-center">About Me</h2>
+    
+    <div class="max-w-5xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16">
+        
+        <div class="relative flex-shrink-0 group">
+          <div class="w-48 h-64 md:w-56 md:h-72 bg-gradient-to-br from-purple-600 to-blue-600 rounded-3xl opacity-30 absolute top-4 left-4 -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform"></div>
+          
+          <div class="w-48 h-64 md:w-56 md:h-72 bg-gray-800 rounded-3xl overflow-hidden border-2 border-gray-700 shadow-2xl">
+            <img src="mine.jpg" alt="Payal Gupta" class="w-full h-full object-cover">
+          </div>
+        </div>
+
+        <div class="flex-1 text-center md:text-left">
+          <p id="about-description" class="text-base md:text-lg text-gray-300 leading-relaxed mb-6">
+            I'm an aspiring Software Developer and AI Engineer with a strong focus on Artificial Intelligence, Machine Learning (ML), Deep Learning (DL), and Generative AI (LLMs). I build intelligent, scalable web-based solutions using data-driven approaches.
+          </p>
+          <p class="text-base md:text-lg text-gray-300 leading-relaxed mb-8">
+            Blending advanced AI technologies with user-centered design principles, I deliver engaging and high-impact digital experiences. My goal is to bridge the gap between complex algorithms and intuitive user interfaces.
+          </p>
+          
+          <div class="flex justify-center md:justify-start">
+            <a href="https://drive.google.com/file/d/1m43BCFqcB7M5hn6hMM4BBTNlzAgDAZ5b/view?usp=sharing" target="_blank" rel="noopener noreferrer"
+               class="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full font-semibold hover:scale-105 transition-transform flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg> Download CV
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     <section id="about" class="py-20 px-6 section-reveal">
       <div class="max-w-6xl mx-auto">
         <h2 id="about-title" class="text-5xl md:text-6xl font-bold heading-font gradient-text mb-12 text-center">About
@@ -1065,24 +1102,54 @@
     });
 
     // Contact form handling
+    emailjs.init('1G4Xg2WU9xsBu3rYy');
+    
     const contactForm = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
 
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      // Show success message
-      formMessage.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
-      formMessage.className = 'text-center text-green-400 font-semibold';
-      formMessage.classList.remove('hidden');
+      // Get form data
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
 
-      // Reset form
-      contactForm.reset();
+      // Send email via EmailJS
+      emailjs.send('service_cll6zmqg', 'template_vg1ihre', {
+        to_email: 'llpayalguptall@gmail.com',
+        from_name: name,
+        from_email: email,
+        subject: subject,
+        message: message
+      }).then(
+        (response) => {
+          // Show success message
+          formMessage.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+          formMessage.className = 'text-center text-green-400 font-semibold';
+          formMessage.classList.remove('hidden');
 
-      // Hide message after 5 seconds
-      setTimeout(() => {
-        formMessage.classList.add('hidden');
-      }, 5000);
+          // Reset form
+          contactForm.reset();
+
+          // Hide message after 5 seconds
+          setTimeout(() => {
+            formMessage.classList.add('hidden');
+          }, 5000);
+        },
+        (error) => {
+          // Show error message
+          formMessage.textContent = '✗ Failed to send message. Please try again or contact via WhatsApp.';
+          formMessage.className = 'text-center text-red-400 font-semibold';
+          formMessage.classList.remove('hidden');
+
+          // Hide message after 5 seconds
+          setTimeout(() => {
+            formMessage.classList.add('hidden');
+          }, 5000);
+        }
+      );
     });
 
     // Animate skill bars on scroll
